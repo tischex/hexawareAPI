@@ -1,11 +1,13 @@
 package com.api.hexaware.model;
 
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="book")
@@ -14,8 +16,9 @@ public class Book {
 	@Column(name="book_id")
 	private String book_id;
 	
-	@OneToMany(targetEntity = Library.class)
-	private Set<Library> library;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@Cascade({CascadeType.ALL})
+	private Library library;
 	
 	@Column(name="book_name")
 	private String book_name;
@@ -27,10 +30,10 @@ public class Book {
 		this.book_id = book_id;
 	}
 
-	public Set<Library> getLibrary() {
+	public Library getLibrary() {
 		return library;
 	}
-	public void setLibrary(Set<Library> library) {
+	public void setLibrary(Library library) {
 		this.library = library;
 	}
 	
