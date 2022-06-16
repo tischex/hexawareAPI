@@ -6,4 +6,5 @@ import com.api.hexaware.model.Book;
 public interface BookService {
 	public Book saveBook(Book book);
 	public List<Book> getAllBooks();
+	public int getCountLibraryByLibraryId(int library_library_id);
 }
