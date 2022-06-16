@@ -25,4 +25,9 @@ public class BookServiceImpl implements BookService {
 	public List<Book> getAllBooks() {
 		return bookRepository.findAll();
 	}
+	
+	@Override
+	public int getCountLibraryByLibraryId(int library_library_id) {
+		return bookRepository.countByLibraryId(library_library_id);
+	}
 }
